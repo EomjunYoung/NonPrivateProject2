@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "테스트3", Toast.LENGTH_SHORT).show();
         Toast.makeText(getApplicationContext(), "테스트4", Toast.LENGTH_SHORT).show();
         Toast.makeText(getApplicationContext(), "테스트5", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "테스트6", Toast.LENGTH_SHORT).show();
 
     }
 }
