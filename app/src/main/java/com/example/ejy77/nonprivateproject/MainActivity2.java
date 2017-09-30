@@ -22,7 +22,5 @@ public class MainActivity2 extends AppCompatActivity{
 
         tv1 = (TextView)findViewById(R.id.tv1);
         Toast.makeText(getApplicationContext(), "WHY", Toast.LENGTH_SHORT).show();
-        Toast.makeText(getApplicationContext(), "WHY2", Toast.LENGTH_SHORT).show();
-        Toast.makeText(getApplicationContext(), "WHY3", Toast.LENGTH_SHORT).show();
     }
 }

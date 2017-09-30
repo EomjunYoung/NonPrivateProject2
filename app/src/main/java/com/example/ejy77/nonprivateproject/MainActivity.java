@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity
                 builder.setContentIntent(pendingIntent);
                 builder.setAutoCancel(true);
                 notificationManager.notify(1, builder.build());
+                // NotificationCompat.Builder를 통해 노티피케이션의 모든 내용을 설정한 이후엔
+                // NotificationManager를 통해 .notify해줘야 한다.
 
             }
         });
