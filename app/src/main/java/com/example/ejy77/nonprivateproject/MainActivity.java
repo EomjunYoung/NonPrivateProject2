@@ -37,12 +37,21 @@ public class MainActivity extends AppCompatActivity
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext());
                 intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 builder.setTicker("??");
+                //상태바 한줄 메시지
                 builder.setContentTitle("뭘까?");
+                //상태바 드래그시 보이는 타이틀
                 builder.setContentText("대체 뭘까!!!?");
+                //상태바 드래그시 보이는 서브타이틀
                 builder.setDefaults(Notification.DEFAULT_SOUND);
                 builder.setDefaults(Notification.DEFAULT_VIBRATE);
 
-                PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                    builder.setCategory(Notification.CATEGORY_MESSAGE)
+                            .setPriority(Notification.PRIORITY_HIGH)
+                            .setVisibility(Notification.VISIBILITY_PUBLIC);
+                }
+
+                    PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
                 builder.setContentIntent(pendingIntent);
                 builder.setAutoCancel(true);
                 notificationManager.notify(1, builder.build());
