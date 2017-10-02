@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
         btn1 = (Button)findViewById(R.id.btn1);
 
@@ -33,9 +35,10 @@ public class MainActivity extends AppCompatActivity
 
                 NotificationManager notificationManager = (NotificationManager)MainActivity.this.getSystemService(MainActivity.this.NOTIFICATION_SERVICE);
                 Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-
+                intent.putExtra("Eom", "인텐트 개꿀");
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext());
-                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
                 builder.setTicker("??");
                 //상태바 한줄 메시지
                 builder.setContentTitle("뭘까?");
@@ -44,19 +47,14 @@ public class MainActivity extends AppCompatActivity
                 //상태바 드래그시 보이는 서브타이틀
                 builder.setDefaults(Notification.DEFAULT_SOUND);
                 builder.setDefaults(Notification.DEFAULT_VIBRATE);
-
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                    builder.setCategory(Notification.CATEGORY_MESSAGE)
-                            .setPriority(Notification.PRIORITY_HIGH)
-                            .setVisibility(Notification.VISIBILITY_PUBLIC);
-                }
-
-                    PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
                 builder.setContentIntent(pendingIntent);
                 builder.setAutoCancel(true);
-                notificationManager.notify(1, builder.build());
+
+
+                notificationManager.notify(1234, builder.build());
                 // NotificationCompat.Builder를 통해 노티피케이션의 모든 내용을 설정한 이후엔
                 // NotificationManager를 통해 .notify해줘야 한다.
+
 
             }
         });
