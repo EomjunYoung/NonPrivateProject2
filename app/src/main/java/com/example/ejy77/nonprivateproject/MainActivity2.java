@@ -29,5 +29,6 @@ public class MainActivity2 extends AppCompatActivity{
         tv2 = (TextView)findViewById(R.id.tv2);
         Toast.makeText(getApplicationContext(), "전달됬을랑까?", Toast.LENGTH_SHORT).show();
         tv2.setText(string);
+        Toast.makeText(getApplicationContext(), string, Toast.LENGTH_SHORT).show();
     }
 }
